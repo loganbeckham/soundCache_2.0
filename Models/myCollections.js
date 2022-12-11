@@ -1,16 +1,11 @@
 const mongoose = require('mongoose');
-// const Samples = require('./samples.js')
+const Sample = require('./samples.js')
 
 const collectionSchema = new mongoose.Schema({
     name: String,
     image: String,
-    samples: [
-        { 
-            name: String,
-            preview: String
-        }
-    ],
+    samples: [Sample.schema]
 });
 
-const Collection = mongoose.model('collection', collectionSchema)
+const Collection = mongoose.model('Collection', collectionSchema)
 module.exports = Collection

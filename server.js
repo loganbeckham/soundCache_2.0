@@ -2,24 +2,26 @@
 ///             Dependancies       //
 /////////////////////////////////////
 
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
 
 require('dotenv').config()
 
-const app = express();
+const app = express()
+app.use(express.json())
+app.use(cors())
 
-const Collection = require('./models/myCollections.js')
 
 /////////////////////////////////////
 ///             Controllers        //
 /////////////////////////////////////
 
-const collectionController = require('./controllers/collectionsController.js')
+const collectionController = require('./Controllers/collectionsController.js')
 app.use('/collections', collectionController);
 
 const sampleController = require('./controllers/samplesController.js');
-app.use('/sample', sampleController);
+app.use('/samples', sampleController);
 
 
 /////////////////////////////////////
@@ -33,7 +35,8 @@ app.use('/sample', sampleController);
 
 const mongodbURI = process.env.MONGODBURI
 
-mongoose.connect(`${mongodbURI}`, () => {
+mongoose.connect(`${mongodbURI}`)
+mongoose.connection.once('open', () => {
     console.log('connected to mongo')
 })
 
@@ -42,5 +45,5 @@ if(process.env.PORT){
 }
 
 app.listen(PORT, ()=>{
-	console.log('listening')
+	console.log(`listening on port ${PORT}`)
 })

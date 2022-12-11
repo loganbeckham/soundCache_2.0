@@ -4,22 +4,27 @@ const router = express.Router();
 /////////////////////////////////////
 ///             Models             //
 /////////////////////////////////////
-const Sample = require('../models/samples.js')
-const Collection = require('../models/myCollections.js')
+const Sample = require('../Models/samples.js')
+const Collection = require('../Models/myCollections.js')
 
 
 /////////////////////////////////////
 ///             Routes             //
 /////////////////////////////////////
 
-// POST ROUTE
+// POST ROUTE ADD STRAIGHT TO COLLECTION OR JUST SAMPLE LIST
 router.post('/' , (req, res) => {
     Collection.findById(req.body.collectionID, (err, foundCollection) => {
         Sample.create(req.body, (err, createdSample) =>{
-            foundCollection.samples.push(createdSample)
-            foundCollection.save((err, data) => {
+            if (foundCollection == true) {
+                foundCollection.samples.push(createdSample)
+                foundCollection.save((err, data) => {
                 res.json(createdSample)
-            })
+                })
+            } else {
+                res.json(createdSample)
+            }
+            
         });
     })
 });

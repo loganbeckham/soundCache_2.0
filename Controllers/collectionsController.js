@@ -4,17 +4,15 @@ const router = express.Router();
 /////////////////////////////////////
 ///             Models             //
 /////////////////////////////////////
-const Collection = require('../models/myCollections.js')
-// const Samples = require('../models/samples.js')
-
+const Collection = require('../Models/myCollections.js')
 
 /////////////////////////////////////
 ///             Routes             //
 /////////////////////////////////////
 
 // POST ROUTE
-router.post('/' , (req, res) => {
-    Collection.create(req.body, (err, createdCollection) =>{
+router.post('/', (req, res) => {
+    Collection.create(req.body, (err, createdCollection) => {
         res.json(createdCollection)
     });
 });

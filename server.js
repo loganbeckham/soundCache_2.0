@@ -11,6 +11,16 @@ const app = express();
 
 const Collection = require('./models/myCollections.js')
 
+/////////////////////////////////////
+///             Controllers        //
+/////////////////////////////////////
+
+const collectionController = require('./controllers/collectionsController.js')
+app.use('/', collectionController);
+
+const sampleController = require('./controllers/samplesController.js');
+app.use('/', sampleController);
+
 
 /////////////////////////////////////
 ///             Routes             //

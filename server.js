@@ -16,10 +16,10 @@ const Collection = require('./models/myCollections.js')
 /////////////////////////////////////
 
 const collectionController = require('./controllers/collectionsController.js')
-app.use('/', collectionController);
+app.use('/collections', collectionController);
 
 const sampleController = require('./controllers/samplesController.js');
-app.use('/', sampleController);
+app.use('/sample', sampleController);
 
 
 /////////////////////////////////////
@@ -33,8 +33,8 @@ app.use('/', sampleController);
 
 const mongodbURI = process.env.MONGODBURI
 
-mongoose.connect(mongodbURI, () => {
-    console.log('connected to mongo');
+mongoose.connect(`${mongodbURI}`, () => {
+    console.log('connected to mongo')
 })
 
 if(process.env.PORT){
@@ -42,5 +42,5 @@ if(process.env.PORT){
 }
 
 app.listen(PORT, ()=>{
-	console.log('listening');
+	console.log('listening')
 })

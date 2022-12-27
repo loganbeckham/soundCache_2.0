@@ -20,16 +20,8 @@ app.use(cors())
 const collectionController = require('./Controllers/collectionsController.js')
 app.use('/collections', collectionController);
 
-const sampleController = require('./controllers/samplesController.js');
-app.use('/samples', sampleController);
-
 const userController = require('./Controllers/userController.js')
 app.use('/user', userController)
-
-
-/////////////////////////////////////
-///             Routes             //
-/////////////////////////////////////
 
 
 /////////////////////////////////////

@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+
 /////////////////////////////////////
 ///             Models             //
 /////////////////////////////////////
 const Collection = require('../Models/myCollections.js')
+
 
 /////////////////////////////////////
 ///             Routes             //
@@ -37,5 +39,19 @@ router.put('/:id', (req, res) => {
         res.json(updatedCollection)
     })
 });
+
+// Add To Collection
+router.put('/addTo/:id', (req, res) => {
+    Collection.findByIdAndUpdate(req.params.id, {
+        $push: {
+            'samples': {
+                name: req.body.name,
+                preview: req.body.preview
+            },
+        },
+    }, {new:true}, (err, updatedModel) => {
+        res.json(updatedModel)
+    })
+})
 
 module.exports = router

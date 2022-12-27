@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
-const Sample = require('./samples.js')
 
 const collectionSchema = new mongoose.Schema({
     name: String,
     image: String,
-    samples: [Sample.schema]
+    samples: [
+        {
+            name: String,
+            preview: String
+        }
+    ]
 });
 
 const Collection = mongoose.model('Collection', collectionSchema)

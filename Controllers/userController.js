@@ -10,6 +10,7 @@ router.post('/login', (req, res) => {
 
 // Signup Route
 router.post('/signup', async (req, res) => {
+    
     const {email, password} = req.body
 
     try {

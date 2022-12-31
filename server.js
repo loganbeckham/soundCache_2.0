@@ -28,17 +28,20 @@ app.use('/user', userController)
 ///             Server             //
 /////////////////////////////////////
 
-const mongodbURI = process.env.MONGODBURI
-
-mongoose.connect(`${mongodbURI}`)
-mongoose.connection.once('open', () => {
-    console.log('connected to mongo')
-})
+let PORT = 3000;
 
 if(process.env.PORT){
 	PORT = process.env.PORT
 }
 
-app.listen(process.env.PORT, ()=>{
+mongoose.set('strictQuery', false);
+
+app.listen(PORT, ()=>{
 	console.log(`listening on port ${PORT}`)
+})
+
+const mongodbURI = process.env.MONGODBURI
+
+mongoose.connect(`${mongodbURI}`, () => {
+	console.log('connected to mongo');
 })

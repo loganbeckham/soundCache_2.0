@@ -38,6 +38,6 @@ app.listen(PORT, ()=>{
 
 const mongodbURI = process.env.MONGODBURI
 
-mongoose.connect(`${mongodbURI}`, () => {
+mongoose.connect(mongodbURI, () => {
 	console.log('connected to mongo');
 })

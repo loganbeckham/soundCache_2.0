@@ -36,8 +36,6 @@ app.listen(PORT, ()=>{
 	console.log(`listening on port ${PORT}`)
 })
 
-const mongodbURI = process.env.MONGODBURI
-
-mongoose.connect(mongodbURI, () => {
+mongoose.connect('mongodb+srv://logan:3DXkXrgBZb4nUrqg@soundcache.sh9nzgs.mongodb.net/?retryWrites=true&w=majority', () => {
 	console.log('connected to mongo');
 })

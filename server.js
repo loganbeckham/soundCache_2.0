@@ -28,11 +28,7 @@ app.use('/user', userController)
 ///             Server             //
 /////////////////////////////////////
 
-let PORT = 3000;
-
-if(process.env.PORT){
-	PORT = process.env.PORT
-}
+const PORT = process.env.PORT || 3000
 
 mongoose.set('strictQuery', false);
 

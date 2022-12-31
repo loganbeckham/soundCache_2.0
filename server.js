@@ -39,6 +39,6 @@ if(process.env.PORT){
 	PORT = process.env.PORT
 }
 
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT, ()=>{
 	console.log(`listening on port ${PORT}`)
 })

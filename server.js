@@ -28,12 +28,10 @@ app.use('/user', userController)
 ///             Server             //
 /////////////////////////////////////
 
-const PORT = process.env.PORT || 3000
-
 mongoose.set('strictQuery', false);
 
-app.listen(PORT, ()=>{
-	console.log(`listening on port ${PORT}`)
+app.listen(process.env.PORT || 3000, ()=>{
+	console.log("listening on port")
 })
 
 mongoose.connect('mongodb+srv://logan:3DXkXrgBZb4nUrqg@soundcache.sh9nzgs.mongodb.net/?retryWrites=true&w=majority', () => {

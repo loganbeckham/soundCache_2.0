@@ -1,6 +1,5 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const { async } = require('three')
 const router = express.Router()
 
 const createToken = (_id) => {

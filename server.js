@@ -31,7 +31,7 @@ app.use('/user', userController)
 mongoose.set('strictQuery', false);
 
 app.listen(process.env.PORT || 3000, ()=>{
-	console.log("listening on port")
+	console.log(process.env.PORT)
 })
 
 mongoose.connect('mongodb+srv://logan:3DXkXrgBZb4nUrqg@soundcache.sh9nzgs.mongodb.net/?retryWrites=true&w=majority', () => {

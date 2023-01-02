@@ -38,4 +38,10 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+router.get('/', (req, res) => {
+    User.find({}, (err, foundUsers) => {
+        res.json(foundUsers)
+    })
+})
+
 module.exports = router

@@ -1,14 +1,23 @@
 const mongoose = require('mongoose');
 
 const collectionSchema = new mongoose.Schema({
-    name: String,
-    image: String,
+    name: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String
+    },
     samples: [
         {
             name: String,
             preview: String
         }
-    ]
+    ],
+    user_id: {
+        type: String,
+        required: true
+    }
 });
 
 const Collection = mongoose.model('Collection', collectionSchema)

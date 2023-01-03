@@ -1,7 +1,8 @@
 const express = require('express');
+const requireAuth = require('../middleware/requireAuth')
 const router = express.Router();
 
-const requireAuth = require('../middleware/requireAuth')
+
 
 // require auth for collections routes
 router.use(requireAuth)

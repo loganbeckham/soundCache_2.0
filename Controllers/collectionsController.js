@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// const requireAuth = require('../middleware/requireAuth')
+const requireAuth = require('../middleware/requireAuth')
 
 // require auth for collections routes
-// router.use(requireAuth)
+router.use(requireAuth)
 
 /////////////////////////////////////
 ///             Models             //
@@ -18,7 +18,12 @@ const Collection = require('../Models/myCollections.js')
 
 // POST ROUTE
 router.post('/', (req, res) => {
-    Collection.create(req.body, (err, createdCollection) => {
+    Collection.create({
+        name: req.body.name,
+        image: req.body.image,
+        samples: req.body.samples,
+        user_id: req.user._id,
+    }, (err, createdCollection) => {
         res.json(createdCollection)
     });
 });

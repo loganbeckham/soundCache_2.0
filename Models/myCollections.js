@@ -14,7 +14,7 @@ const collectionSchema = new mongoose.Schema({
             preview: String
         }
     ],
-    user_id: {
+    user_email: {
         type: String,
         required: true
     }

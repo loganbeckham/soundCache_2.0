@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
         name: req.body.name,
         image: req.body.image,
         samples: req.body.samples,
-        user_id: req.user._id,
+        user_email: req.user.email,
     }, (err, createdCollection) => {
         res.json(createdCollection)
     });

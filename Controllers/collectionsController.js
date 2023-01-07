@@ -19,12 +19,7 @@ const Collection = require('../Models/myCollections.js')
 
 // POST ROUTE
 router.post('/', (req, res) => {
-    Collection.create({
-        name: req.body.name,
-        image: req.body.image,
-        samples: req.body.samples,
-        user_email: req.user.email,
-    }, (err, createdCollection) => {
+    Collection.create(req.body, (err, createdCollection) => {
         res.json(createdCollection)
     });
 });

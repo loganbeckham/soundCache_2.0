@@ -31,6 +31,14 @@ router.get('/', (req, res) => {
     })
 })
 
+// GET BY ID
+
+router.get('/:id', (req, res) => {
+    Collection.findById(req.params.id, (err, foundCollection) => {
+        res.json(foundCollection)
+    })
+})
+
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
     Collection.findByIdAndRemove(req.params.id, (err, deletedCollection) => {

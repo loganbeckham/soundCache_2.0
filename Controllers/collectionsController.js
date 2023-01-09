@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
     })
 });
 
-// Add To Collection
+// ADD TO COLLECTION
 router.put('/addTo/:id', (req, res) => {
     Collection.findByIdAndUpdate(req.params.id, {
         $push: {
@@ -64,6 +64,31 @@ router.put('/addTo/:id', (req, res) => {
         },
     }, {new:true}, (err, updatedModel) => {
         res.json(updatedModel)
+    })
+})
+
+// RENAME SAMPLE
+router.put('/rename/:id/:index', (req,res) => {
+    Collection.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            'samples._id': req.params.index
+        },
+        {
+            $set : {'samples.$.name': res.body.name}
+        }, {new: true}, (err, updatedModel) => {
+        }
+    )
+})
+
+router.delete('/:id/:index', (req, res) => {
+    Collection.findByIdAndUpdate(req.params.id, {
+        $pull: {
+            'samples': {
+                _id: req.params.index
+            },
+        },
+    }, {new:true}, (err, updatedModel) => {
     })
 })
 
